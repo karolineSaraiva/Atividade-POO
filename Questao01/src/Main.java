@@ -1,7 +1,3 @@
-package Questao1;
-import Questao1.Biblioteca;
-import Questao1.Livro;
-
 public class Main {
     public static void main(String[] args){
         Livro livro = new Livro("banana", "joao", 2000, 400);
