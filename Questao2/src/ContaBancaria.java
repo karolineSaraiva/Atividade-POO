@@ -3,19 +3,19 @@ public abstract class ContaBancaria {
     private int numeroConta;
     protected float saldo;
 
-    // GET E SET
+    // GETTER E SETTER
     public String getNomeCliente() {
         return nomeCliente;
     }
 
     public void setNomeCliente(String nomeCliente) {
-        if(nomeCliente == null){
-            System.out.println("nome do cliente não informado");
+        if(nomeCliente == null){        //Verificar se o campo está vazio
+            System.out.println("Nome do cliente não informado");
             this.nomeCliente = "Cliente não informado";
         }
         else {
             if (nomeCliente.equals(" ")) {
-                System.out.println("nome do cliente não informado");
+                System.out.println("Nome do cliente não informado");
                 this.nomeCliente = "Cliente não informado";
             } else {
                 this.nomeCliente = nomeCliente;
@@ -28,8 +28,8 @@ public abstract class ContaBancaria {
     }
 
     public void setNumeroConta(int numeroConta) {
-        if(numeroConta < 0){
-            System.out.println("numero da conta não informado");
+        if(numeroConta < 0){            //Verificar se o numero informado é negativo
+            System.out.println("Número de conta inválido.");
         }
         else {
             this.numeroConta = numeroConta;
@@ -45,7 +45,6 @@ public abstract class ContaBancaria {
     }
 
     //CONSTRUTOR
-
     public ContaBancaria(String nomeCliente, int numeroConta) {
         setNomeCliente(nomeCliente);
         setNumeroConta(numeroConta);
@@ -53,11 +52,10 @@ public abstract class ContaBancaria {
     }
 
     // METODOS
-
-    abstract void sacar(float valor);
+    abstract void sacar(float valor);   //Abstrato para ser implementado pelas sub
 
     public void depositar(float valor){
-        if(valor <= 0){
+        if(valor <= 0){         //Verifica se o valor do deposito é positivo
             System.out.println("Deposito inválido");
         }
         else{

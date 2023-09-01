@@ -5,8 +5,6 @@ public class Banco {
         ContaPoupanca cliente1 = new ContaPoupanca("jose", 123,5,10);
         ContaEspecial cliente2 = new ContaEspecial("maria", 345,400);
 
-        //cliente.add(cliente1);
-
         //SACAR
         cliente1.sacar(400);
         cliente2.sacar(400);

@@ -2,13 +2,13 @@ public class ContaPoupanca extends ContaBancaria{
     private int diaDeRendimento;
     private double taxaDeRendimento;
 
-    //GET E SET
+    //GETTER E SETTER
     public int getDiaDeRendimento() {
         return diaDeRendimento;
     }
 
     public void setDiaDeRendimento(int diaDeRendimento) {
-        if(diaDeRendimento < 0){
+        if(diaDeRendimento < 0){        //Verifica se o dia é positivo
             System.out.println("Dia inválido");
         }
         else{
@@ -21,7 +21,7 @@ public class ContaPoupanca extends ContaBancaria{
     }
 
     public void setTaxaDeRendimento(double taxaDeRendimento) {
-        if(taxaDeRendimento < 0){
+        if(taxaDeRendimento < 0){       //Não permite que a taxa seja um valor negativo
             System.out.println("Taxa inválida");
         }
         else{
@@ -30,8 +30,6 @@ public class ContaPoupanca extends ContaBancaria{
     }
 
     //CONSTRUTOR
-
-
     public ContaPoupanca(String nomeCliente, int numeroConta, int diaDeRendimento, double taxaDeRendimento) {
         super(nomeCliente, numeroConta);
         setDiaDeRendimento(diaDeRendimento);
@@ -39,8 +37,8 @@ public class ContaPoupanca extends ContaBancaria{
     }
 
     //METODOS
-    public void sacar(float valor){
-        if(valor > getSaldo()){
+    public void sacar(float valor){     //IMPLEMENTAÇÃO DO METODO SACAR
+        if(valor > getSaldo()){     //Verifica se o saldo é maior que o saque
             System.out.println("Saque inválido");
         }
         else{
@@ -49,10 +47,10 @@ public class ContaPoupanca extends ContaBancaria{
     }
     public void calcularNovoSaldo(){
         float novoSaldo = 0;
-        for(int i=0; i<getDiaDeRendimento(); i++){
+        for(int i=0; i<getDiaDeRendimento(); i++){  //Calcula o valor do saldo de acordo com a taxa e o numero de dias
             novoSaldo = (float) (getSaldo() + (getSaldo()*getTaxaDeRendimento()));
         }
-        if(novoSaldo < 0){
+        if(novoSaldo < 0){      //O saldo não pode ser negativo
             System.out.println("Saldo inválido");
         }
         else{

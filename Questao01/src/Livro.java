@@ -5,19 +5,20 @@ public class Livro {
     private int numPag;
     private String status;
 
+    //GETTER E SETTER
     public String getTitulo() {
         return titulo;
     }
 
     public void setTitulo(String titulo) {
-        if(titulo == null){
-            System.out.println("Sem título");
-            this.titulo = "sem titulo";
+        if(titulo == null){             //Verificar se o título está vazio
+            System.out.println("Título não informado.");
+            this.titulo = "Sem titulo";
         }
         else{
             if(titulo.equals(" ")){
-                System.out.println("Sem título");
-                this.titulo = "sem titulo";
+                System.out.println("Título não informado.");
+                this.titulo = "Sem titulo";
             }
             else{
                 this.titulo = titulo;
@@ -30,14 +31,14 @@ public class Livro {
     }
 
     public void setNomeAutor(String nomeAutor) {
-        if(nomeAutor == null){
-            System.out.println("autor não informado");
-            this.nomeAutor = "autor não informado";
+        if(nomeAutor == null){              //Verificar se o nome está vazio
+            System.out.println("Autor não informado");
+            this.nomeAutor = "Autor não informado";
         }
         else {
             if (nomeAutor.equals(" ")) {
-                System.out.println("autor não informado");
-                this.nomeAutor = "autor não informado";
+                System.out.println("Autor não informado");
+                this.nomeAutor = "Autor não informado";
             } else {
                 this.nomeAutor = nomeAutor;
             }
@@ -49,7 +50,12 @@ public class Livro {
     }
 
     public void setAnoPubli(int anoPubli) {
-        this.anoPubli = anoPubli;
+        if(anoPubli < 0){                   //Não permitir um set de ano negativo
+            System.out.println("Ano inválido!");
+        }
+        else{
+            this.anoPubli = anoPubli;
+        }
     }
 
     public int getNumPag() {
@@ -57,8 +63,8 @@ public class Livro {
     }
 
     public void setNumPag(int numPag) {
-        if(numPag < 150 || numPag > 1000){
-            System.out.println("quantidade inválida");
+        if(numPag < 150 || numPag > 1000){ //Verificar se o número de páginas está entre 150 e 1000
+            System.out.println("Número de páginas fora do intervalo esperado.");
         }
         else{
             this.numPag = numPag;
@@ -73,6 +79,7 @@ public class Livro {
         this.status = attStatus;
     }
 
+    //CONSTRUTOR
     public Livro(String titulo, String nomeAutor, int anoPubli, int numPag) {
         setTitulo(titulo);
         setNomeAutor(nomeAutor);

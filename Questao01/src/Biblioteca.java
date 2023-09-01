@@ -5,20 +5,20 @@ public class Biblioteca {
     private String nome;
     private ArrayList<Livro> acervo;
 
-    //get e set
+    //GETTER E SETTER
     public String getLocal() {
         return local;
     }
 
     public void setLocal(String local) {
-        if(local == null){
-            System.out.println("local não informado");
-            this.local = "local não informado";
+        if(local == null){          //Verificar se o local está vazio
+            System.out.println("Local não informado.");
+            this.local = "Local não informado";
         }
         else {
             if (local.equals(" ")) {
-                System.out.println("local não informado");
-                this.local = "local não informado";
+                System.out.println("local não informado.");
+                this.local = "Local não informado";
             } else {
                 this.local = local;
             }
@@ -30,14 +30,14 @@ public class Biblioteca {
     }
 
     public void setNome(String nome) {
-        if(nome == null){
-            System.out.println("nome não informado");
-            this.nome = "nome não informado";
+        if(nome == null){           //Verificar se o nome está vazio
+            System.out.println("Nome não informado.");
+            this.nome = "Sem nome";
         }
         else {
             if (nome.equals(" ")) {
-                System.out.println("nome não informado");
-                this.nome = "nome não informado";
+                System.out.println("Nome não informado.");
+                this.nome = "Sem nome";
             } else {
                 this.nome = nome;
             }
@@ -52,17 +52,16 @@ public class Biblioteca {
         this.acervo = new ArrayList<>();
     }
 
-    // Construtor
+    // CONSTRUTOR
     public Biblioteca(String local, String nome) {
         setLocal(local);
         setNome(nome);
         setAcervo(acervo);
     }
 
-    //Metodos
-    Livro livro;
+    //METODOS
     public void addLivro(Livro livro) {
-        if(acervo.size() > 150) {
+        if(acervo.size() > 150) {     //Adiciona livros ao acervo até que ele atinja sua capacidade máxima
             System.out.println("O acervo atingiu a quantidade maxima");
         }
         else{
@@ -70,7 +69,7 @@ public class Biblioteca {
         }
     }
 
-    public void emprestarLivro(Livro livro) {
+    public void emprestarLivro(Livro livro) {   //Verifica se um livro pertence ao acervo e muda seu status
         if(livro.getStatus().equals("Disponivel") && acervo.contains(livro)){
             livro.setStatus("Emprestado");
         }
@@ -79,7 +78,7 @@ public class Biblioteca {
         }
     }
 
-    public void devolverLivro(Livro livro) {
+    public void devolverLivro(Livro livro) {    //Verifica se um livro pertence ao acervo e muda seu status
         if(livro.getStatus().equals("Emprestado") && acervo.contains(livro)){
             livro.setStatus("Disponivel");
         }
@@ -88,8 +87,8 @@ public class Biblioteca {
         }
     }
 
-    public void mostrarAcervo(){
-        System.out.println("Livros disponiveis na "+nome+": ");
+    public void mostrarAcervo(){        //Lista os livros que pertencem ao acervo
+        System.out.println("Livros presentes no acervo na "+nome+": ");
         for(Livro livro: acervo){
             System.out.println(livro.getTitulo()+" do Autor "+livro.getNomeAutor()+". Status: "+livro.getStatus());
         }
